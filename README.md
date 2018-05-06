@@ -9,7 +9,8 @@
 
 
 <div id="checkall"></div>
-# checkall.html
+
+## checkall.html
 
 > checkall.html实现了一个简单的列表全选功能
 
@@ -25,7 +26,8 @@
 优化思路： 添加的新行应当由用户来手动填写；多选框以及按钮的样式可以进一步优化；
 
 <div id="dialog"></div>
-# dialog.html
+
+## dialog.html
 
 > dialog.html简单的实现了一个带有遮罩层的弹出框
 
@@ -35,7 +37,8 @@
 优化思路：可以对样式进行细致的优化，并最终抽象成为一个插件，该插件应当由用户提供的数据有：对话框标题文本，对话框内容（可能为一段html代码），对话框按钮个数（1-2个）及文本等。并且要灵活的控制对话框的位置。
 
 <div id="menus"></div>
-# menus.html
+
+## menus.html
 
 > menus.html实现了一个简单的风琴菜单效果
 
