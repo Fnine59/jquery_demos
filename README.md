@@ -10,6 +10,7 @@
 
 <div id="checkall"></div>
 # checkall.html
+
 > checkall.html实现了一个简单的列表全选功能
 
 项目功能：点击添加按钮可以添加新的行，新行内容是写死的。选择某几行点击删除按钮可以删除该行。
@@ -25,6 +26,7 @@
 
 <div id="dialog"></div>
 # dialog.html
+
 > dialog.html简单的实现了一个带有遮罩层的弹出框
 
 实现思路：
@@ -34,6 +36,7 @@
 
 <div id="menus"></div>
 # menus.html
+
 > menus.html实现了一个简单的风琴菜单效果
 
 实现思路：主要使用了jQuery中的`slideToggle`函数，点击某一个父菜单项时对它之下的子菜单项使用`slideToggle`函数，对其他的子菜单项使用`slideUp`函数，这样保证了其他显示的子菜单被收回，而其他没有显示的子菜单则不发生任何变化。
