@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>带遮罩层的模式对话框</title>
+	<style type="text/css">
+		/* 禁止选中 */
+		.forbid_choose{
+			moz-user-select: -moz-none;
+			-moz-user-select: none;
+			-o-user-select:none;
+			-khtml-user-select:none;
+			-webkit-user-select:none;
+			-ms-user-select:none;
+			user-select:none;
+		}
+		/* 遮罩层样式 */
+		.mask{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			background: black;
+			opacity: 0.5;
+			z-index: 8888;
+		}
+		.dialog{
+			width: 30%;
+			height: 30%;
+			background: white;
+			z-index: 9999;
+			position: fixed;/*指定为fixed则对话框不随页面滚动*/
+			/*position: absolute;*//*指定为absolute则对话框跟随页面滚动*/
+			left: 35%;
+			top: 35%;
+			padding: 20px 30px;
+			font-family: "微软雅黑";
+		}
+
+		.dialog_head{
+			font-weight: bold;
+			font-size: 18px;
+			float: left;
+		}
+		.dialog_close{
+			float: right;
+			cursor: pointer;
+			moz-user-select: -moz-none;
+			-moz-user-select: none;
+			-o-user-select:none;
+			-khtml-user-select:none;
+			-webkit-user-select:none;
+			-ms-user-select:none;
+			user-select:none;
+		}
+		.dialog_content{
+			float: left;
+			width: 100%;
+			height: 50%;
+			margin: 5% 0;
+		}
+		.dialog_confirm{
+			float: left;
+			width: 20%;
+			height: 30px;
+			margin-left: 40%;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$("#alert_dialog").click(function(){
+				//首先生成一个遮罩层
+				var $mask = $("<div class=\"mask forbid_choose\"></div>");
+				$("body").append($mask);
+
+				//生成对话框
+				var $dialog = $("<div class=\"dialog\"> \
+					<span class=\"dialog_head\">标题</span> \
+					<span class=\"dialog_close\">x</span> \
+					<p class=\"dialog_content\">提示内容提示内容提示内容</p> \
+					<button class=\"dialog_confirm\">确定</button> \
+					</div>");
+				$("body").append($dialog);
+				$(document).on("click",".dialog_close,.dialog_confirm",function(){
+					$(".dialog,.mask").remove();
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+<button id="alert_dialog">登录</button>
+<p>文本开始<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>文本结束</p>
+</body>
+</html>

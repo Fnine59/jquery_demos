@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>风琴菜单</title>
+	<style type="text/css">
+		ul,li{
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+		.menu{
+			width: 200px;
+			height: auto;
+			margin-top: 100px;
+			margin-left: 100px;
+		}
+		.item{
+			background: #ADADAD;
+			padding:10px 30px;
+			color: white;
+			font-weight: bold;
+			font-size: 16px;
+			cursor: pointer;
+			font-family: "微软雅黑";
+		}
+		.item:hover{
+			background: #7B7B7B;
+		}
+		.sub{
+			font-size: 14px;
+			font-family: "微软雅黑";
+			display: none;
+		}
+		.sub li{
+			padding: 5px;
+			background: #F0F0F0;
+			cursor: pointer;
+			text-align: center;
+		}
+		.sub li:hover{
+			background: #d0d0d0;
+			color: white;
+		}
+		.sub_choose{
+			background: #BEBEBE!important;
+			color: white;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".item").click(function(){
+				$(this).next(".sub").slideToggle("fast").siblings(".sub").slideUp("fast").siblings(".sub").children().removeClass("sub_choose");
+			});
+			$(".sub li").click(function(){
+				$(this).addClass("sub_choose").siblings("li").removeClass("sub_choose");
+			});
+		});
+	</script>
+</head>
+<body>
+<ul class="menu">
+	<li class="item">图书管理</li>
+	<ul class="sub">
+		<li>添加图书</li>
+		<li>修改图书</li>
+		<li>查询图书</li>
+		<li>删除图书</li>
+	</ul>
+	<li class="item">成员管理</li>
+	<ul class="sub">
+		<li>添加成员</li>
+		<li>修改成员</li>
+		<li>查询成员</li>
+		<li>删除成员</li>
+	</ul>
+	<li class="item">权限管理</li>
+	<ul class="sub">
+		<li>添加权限</li>
+		<li>修改权限</li>
+		<li>查询权限</li>
+		<li>删除权限</li>
+	</ul>
+</ul>
+</body>
+</html>

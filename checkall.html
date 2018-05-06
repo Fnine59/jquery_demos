@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title>全选</title>
+	<style type="text/css">
+		th,td {
+			padding: 10px;
+			text-align: center;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//添加行，要考虑全选按钮的状态
+			$("button:first").click(function(){
+				var $newRow;
+				if($(":checkbox:first").prop("checked")){//如果全选按钮选中了，新添加的行应该也是选中的
+					$newRow = $("<tr><td><input type='checkbox' checked='checked'></td><td>09班</td><td>小钱</td><td>28</td></tr>");
+				}else{//如果全选按钮没有选中，新添加的行应该也没有选中
+					$newRow = $("<tr><td><input type='checkbox'></td><td>09班</td><td>小钱</td><td>28</td></tr>");
+				}
+				$("table").append($newRow);
+			});
+
+			//根据全选按钮的状态决定其他按钮的状态
+			$(":checkbox:first").click(function(){
+				$(":checkbox:gt(0)").prop("checked",$(this).prop("checked"));
+			});
+
+			//根据其他按钮的整体状态决定全选按钮的状态
+			//如果有一个没有选中，全选按钮不选中
+			//如果所有按钮都选中，全选按钮也选中
+			$(document).on("click",":checkbox:gt(0)",function(){//用on函数监听新添加的行
+				var flag = true;
+				$(":checkbox:gt(0)").each(function(){//each可以看作一个循环
+					if(!$(this).prop("checked")){//如果有一个没选中，全选框不被选中，flag为false
+						flag = false;
+					}
+				});
+				$(":checkbox:first").prop("checked",flag);
+			});
+
+			//删除行
+			$("button:last").click(function(){
+				$(":checked:not(:eq(0))").parents("tr").remove();//:checked选择被选中的input框并移除包含它们的tr祖先元素
+			});
+		});
+	</script>
+</head>
+<body>
+	<div>
+		<button>添加</button>
+		<button>删除</button>
+		<table style="width: 50%;">
+			<tr>
+				<th><input type="checkbox"></th>
+				<th>班级</th>
+				<th>姓名</th>
+				<th>年龄</th>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>01班</td>
+				<td>小张</td>
+				<td>18</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>02班</td>
+				<td>小王</td>
+				<td>56</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>03班</td>
+				<td>小李</td>
+				<td>36</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>04班</td>
+				<td>小吴</td>
+				<td>32</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>05班</td>
+				<td>小周</td>
+				<td>30</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox"></td>
+				<td>06班</td>
+				<td>小郑</td>
+				<td>25</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
